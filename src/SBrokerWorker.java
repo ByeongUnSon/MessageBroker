@@ -1,3 +1,4 @@
+package team.broker;
 
 import java.io.IOException;
 
@@ -12,10 +13,10 @@ public class SBrokerWorker extends Worker<SBrokerSession> {
 	}
 
 	/*
-	 *  Worker<SBrokerSession>ÀÇ Ãß»óÅ¬·¡½º
-	 *  Process(T clientObject) ¸Ş¼­µå¸¦ ¿À¹ö¶óÀÌµù ÇÑ´Ù.
-	 *  ÀÌ ¸Ş¼­µå´Â WorkerGroup Å¬·¡½º¿¡¼­
-	 *  SBrokerSessionÅ¬·¡½ºÀÇ °´Ã¼ client°¡ Ãß°¡µÇ¸é ½ÇÇàµÇ´Â ¸Ş¼­µåÀÌ´Ù.
+	 *  Worker<SBrokerSession>ì˜ ì¶”ìƒí´ë˜ìŠ¤ 
+	 *  process(T clientObject) ë©”ì„œë“œë¥¼ ì˜¤ë²„ë¼ì´ë”© í•œë‹¤.
+	 *  ì´ ë©”ì„œë“œëŠ” WorkerGroup í´ë˜ìŠ¤ì—ì„œ 
+	 *  SBrokerSessioní´ë˜ìŠ¤ì˜ ê°ì²´ clientê°€ ì¶”ê°€ ë˜ë©´ ì‹¤í–‰ë˜ëŠ” ë©”ì„œë“œì´ë‹¤.
 	 */
 	@Override
 	protected void process (final SBrokerSession client)   {
