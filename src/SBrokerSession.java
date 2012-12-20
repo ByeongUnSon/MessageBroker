@@ -1,4 +1,3 @@
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,31 +13,31 @@ public class SBrokerSession {
 	private DataOutputStream output;
 		
 	/*
-	 * Å¬¶óÀÌ¾ğÆ®·Î ¿Â ¼ÒÄÏ°´Ã¼¸¦ ¹Ş¾Æ¼­ ½ºÆ®¸² °´Ã¼¸¦ »ı¼ºÇÏ°í
-	 * ¼­¹öÂÊÀ¸·Î º¸³¾ ¼ÒÄÏÀ» ¿­¾î¼­ ½ºÆ®¸² °´Ã¼¸¦ »ı¼ºÇÑ´Ù.
+	 * í´ë¼ì´ì–¸íŠ¸ë¡œ ì˜¨ ì†Œì¼“ê°ì²´ë¥¼ ë°›ì•„ì„œ ìŠ¤íŠ¸ë¦¼ ê°ì²´ë¥¼ ìƒì„±í•˜ê³ 
+	 * ì„œë²„ìª½ìœ¼ë¡œ ë³´ë‚¼ ì†Œì¼“ì„ ì—´ì–´ì„œ ìŠ¤íŠ¸ë¦¼ ê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
 	 */
 	public SBrokerSession(Socket requestSocket) throws IOException {
 		this.requestSocket = requestSocket;
 		this.in = new DataInputStream(requestSocket.getInputStream());
 		this.out = new DataOutputStream(requestSocket.getOutputStream());
 		
-		// ¼­¹ö·Î º¸³¾ ¼ÒÄÏ ¿­±â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		this.responseSocket = new Socket(SBroker.serverIp, SBroker.serverPort);
 		this.output = new DataOutputStream(responseSocket.getOutputStream());
 		this.input = new DataInputStream(responseSocket.getInputStream());		
 	}
 
 	/*
-	 * Message SpecÀ» ÁØ¼öÇÏ¿© ¸Ş½ÃÁö¸¦ ¼Û¼ö½ÅÇÑ´Ù.
+	 * Message Specï¿½ï¿½ ï¿½Ø¼ï¿½ï¿½Ï¿ï¿½ ï¿½Ş½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * Client <-> Broker <-> Server
 	 */
 	public void execute() throws IOException {
 		
-		// Å¬¶óÀÌ¾ğÆ®·Î ¿Â µ¥ÀÌÅÍ¸¦ 10¹ÙÀÌÆ® ¸¸Å­ ÀÚ¸¥´Ù.
+		// Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ 10ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Å­ ï¿½Ú¸ï¿½ï¿½ï¿½.
 		byte[] buf = new byte[10];
 		in.readFully(buf);
 
-		// µ¥ÀÌÅÍ ±æÀÌ ÇÊµå
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½
 		String dataStr = new String(buf);
 		System.out.println("dataLength : " + dataStr);
 		
@@ -69,7 +68,7 @@ public class SBrokerSession {
 		
 	}
 	
-	// ¸ğµç ½ºÆ®¸² °´Ã¼¿Í ¼ÒÄÏ °´Ã¼¸¦ ´İ¾ÆÁØ´Ù.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½İ¾ï¿½ï¿½Ø´ï¿½.
 	public void close() {
 
 		try {
