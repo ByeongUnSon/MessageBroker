@@ -50,7 +50,7 @@ public class SBroker {
 				Scanner sc = new Scanner(System.in);
 				System.out.print("Input workCount Setting: ");
 				int workCount = sc.nextInt();
-				// Å¬¶óÀÌ¾ğÆ®ÀÇ ¼ÒÄÏ °´Ã¼¸¦ ¹Ş¾Æ¿À´Â ¾²·¹µå¸¦ °¡µ¿ÇÑ´Ù.
+				// í´ë¼ì´ì–¸íŠ¸ì˜ ì†Œì¼“ ê°ì²´ë¥¼ ë°›ì•„ì˜¤ëŠ” ì“°ë ˆë“œë¥¼ ê°€ë™í•œë‹¤.
 				sockAthread = new SocketAcceptor(host, port, workCount);
 				sockAthread.start();
 
