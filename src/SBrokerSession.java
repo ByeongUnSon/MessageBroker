@@ -11,36 +11,33 @@ public class SBrokerSession {
 	private DataOutputStream out;
 	private DataInputStream input;
 	private DataOutputStream output;
-		
+
 	/*
-	 * 클라이언트로 온 소켓객체를 받아서 스트림 객체를 생성하고
-	 * 서버쪽으로 보낼 소켓을 열어서 스트림 객체를 생성한다.
+	 * 클라이언트로 온 소켓객체를 받아서 스트림 객체를 생성하고 서버쪽으로 보낼 소켓을 열어서 스트림 객체를 생성한다.
 	 */
 	public SBrokerSession(Socket requestSocket) throws IOException {
 		this.requestSocket = requestSocket;
 		this.in = new DataInputStream(requestSocket.getInputStream());
 		this.out = new DataOutputStream(requestSocket.getOutputStream());
-		
-		// ������ ���� ���� ����
+		// 서버로 보낼 소켓 열기
 		this.responseSocket = new Socket(SBroker.serverIp, SBroker.serverPort);
 		this.output = new DataOutputStream(responseSocket.getOutputStream());
-		this.input = new DataInputStream(responseSocket.getInputStream());		
+		this.input = new DataInputStream(responseSocket.getInputStream());
 	}
 
 	/*
-	 * Message Spec�� �ؼ��Ͽ� �޽����� �ۼ����Ѵ�.
-	 * Client <-> Broker <-> Server
+	 * Message Spec을 준수하여 메시지를 송수신한다. Client <-> Broker <-> Server
 	 */
 	public void execute() throws IOException {
-		
-		// Ŭ���̾�Ʈ�� �� �����͸� 10����Ʈ ��ŭ �ڸ���.
+
+		// 클라이언트로 온 데이터를 10바이트 만큼 자른다.
 		byte[] buf = new byte[10];
 		in.readFully(buf);
 
-		// ������ ���� �ʵ�
+		// 데이터 길이 필드
 		String dataStr = new String(buf);
 		System.out.println("dataLength : " + dataStr);
-		
+
 		int dataSize = 0;
 		dataSize = Integer.parseInt(dataStr.trim()) - 10;
 		System.out.println("dataSize : " + dataSize);
@@ -65,10 +62,9 @@ public class SBrokerSession {
 		// Send Data To Client Again
 		out.write(body);
 		out.flush();
-		
 	}
-	
-	// ���� ��Ʈ�� ��ü�� ���� ��ü�� �ݾ��ش�.
+
+	// 모든 스트림 객체와 소켓 객체를 닫아준다.
 	public void close() {
 
 		try {
@@ -79,7 +75,7 @@ public class SBrokerSession {
 		} finally {
 			in = null;
 		}
-		
+
 		try {
 			if (out != null) {
 				out.close();
@@ -88,16 +84,16 @@ public class SBrokerSession {
 		} finally {
 			out = null;
 		}
-		
+
 		try {
 			if (input != null) {
 				input.close();
 			}
-		} catch (IOException ignored) {			
+		} catch (IOException ignored) {
 		} finally {
 			input = null;
 		}
-		
+
 		try {
 			if (output != null) {
 				output.close();
@@ -106,7 +102,7 @@ public class SBrokerSession {
 		} finally {
 			output = null;
 		}
-		
+
 		try {
 			if (responseSocket != null) {
 				responseSocket.close();
@@ -115,7 +111,7 @@ public class SBrokerSession {
 		} finally {
 			responseSocket = null;
 		}
-		
+
 		try {
 			if (requestSocket != null) {
 				requestSocket.close();
@@ -125,7 +121,6 @@ public class SBrokerSession {
 			requestSocket = null;
 		}
 
-	
 	}
 
 }
