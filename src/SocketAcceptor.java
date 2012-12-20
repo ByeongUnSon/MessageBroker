@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.InetAddress;
@@ -37,9 +36,9 @@ public class SocketAcceptor extends Thread {
 	}
 
 	/*
-	 * ¼­¹ö¼ÒÄÏÀÌ ±â´Ù¸®´Ù°¡ Å¬¶óÀÌ¾ğÆ®ÀÇ ¼ÒÄÏ °´Ã¼°¡ µé¾î¿À¸é
-	 * SBrokerSession Å¬·¡½ºÀÇ °´Ã¼ client¿¡ Á¤º¸¸¦ ´ãÀº ÈÄ
-	 * WorkerGroup¿¡ Ãß°¡ÇÑ´Ù.
+	 * ì„œë²„ì†Œì¼“ì´ ê¸°ë‹¤ë¦¬ë‹¤ê°€ í´ë¼ì´ì–¸íŠ¸ì˜ ì†Œì¼“ ê°ì²´ê°€ ë“¤ì–´ì˜¤ë©´
+	 * SBrokerSession í´ë˜ìŠ¤ì˜ ê°ì²´ clientì— ì •ë³´ë¥¼ ë‹´ì€ í›„
+	 * WorkerGroupì— ì¶”ê°€í•œë‹¤.
 	 */
 	@Override
 	public void run() {
