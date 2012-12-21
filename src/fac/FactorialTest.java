@@ -7,22 +7,31 @@ public class FactorialTest {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("íŒ©í† ë¦¬ì–¼ ê³„ì‚° í”„ë¡œê·¸ë¨");
+		System.out.println("Factorial Program (Recursive)");
 		System.out.println("################");
-		System.out.print("ìˆ«ì ì…ë ¥ : ");
-		int num = sc.nextInt();
-		try {
-			System.out.println("factorial("+num+") í•¨ìˆ˜ í˜¸ì¶œ ê²°ê³¼ : " + factorial(num));
-		} catch (InputMismatchException ime) {
-			System.out.println(ime.getMessage());
+		while (true) {
+			System.out.print("¼ıÀÚ ÀÔ·Â : ");
+			int num = sc.nextInt();
+			if (num <= 0) {
+				System.out.println("1 ÀÌ»óÀÇ ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+			}
+			else {
+				try {
+					System.out.println("factorial(" + num + ") ÇÔ¼ö È£Ãâ : "
+							+ factorial(num));
+				} catch (InputMismatchException ime) {
+					System.out.println(ime.getMessage());
+				}
+			}
 		}
 	}
+
 	public static int factorial(int n) {
 		int result = 0;
-		if (n<=1)
+		if (n <= 1)
 			return 1;
 		else {
-			result = n * factorial(n-1);
+			result = n * factorial(n - 1);
 			return result;
 		}
 	}
