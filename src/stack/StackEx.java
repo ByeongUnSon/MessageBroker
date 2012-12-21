@@ -12,7 +12,7 @@ public class StackEx {
 	public StackEx(int stackSize) {
 		top = -1;
 		this.stackSize = stackSize;
-		stack = new Object[this.stackSize]; 	// 스택의 저장공간 할당
+		stack = new Object[this.stackSize]; 	// stack Size 
 	}
 
 	public int getSize() {
@@ -27,7 +27,7 @@ public class StackEx {
 			stack[++top] = str;
 			System.out.println("Pushed String : " + str);
 		} catch (ArrayIndexOutOfBoundsException abe) {
-			throw new OverFlowException("OverFlow발생!!", abe);
+			throw new OverFlowException("OverFlow Exception !!", abe);
 		}		
 	}
 	
@@ -38,7 +38,7 @@ public class StackEx {
 		try {
 			return (String) stack[top--];
 		} catch (ArrayIndexOutOfBoundsException abe) {
-			throw new UnderFlowException("UnderFlow발생!!", abe);
+			throw new UnderFlowException("UnderFlow Exception !!", abe);
 		} 
 	}
 		

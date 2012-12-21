@@ -16,48 +16,48 @@ public class StackTest {
 		sc = new Scanner(System.in);
 
 		System.out.println("------------ Push/Pop & OverFlow/UnderFlow Test Program ------------");
-		System.out.println("Stackì˜ í¬ê¸°ë¥¼ ë¨¼ì € ì§€ì •í•´ì£¼ì„¸ìš”.");
-		System.out.print("í¬ê¸° ì…ë ¥ : ");
+		System.out.println("StackÀÇ Å©±â¸¦ ¸ÕÀú ÁöÁ¤ÇØÁÖ¼¼¿ä.");
+		System.out.print("Å©±â ÀÔ·Â : ");
 		try {
 			size = sc.nextInt();
 		} catch (InputMismatchException ime) {
-			throw new InputException("ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”!!", ime);
+			throw new InputException("¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä!!", ime);
 		}
 		s = new StackEx(size);
-		System.out.println("ì„¤ì •ëœ ìŠ¤íƒì˜ í¬ê¸° : " + s.getSize());
+		System.out.println("¼³Á¤µÈ ½ºÅÃÀÇ Å©±â : " + s.getSize());
 		
 		while (ok1) {
 			ok2 = true;
-			System.out.println("1~3 ë²ˆí˜¸ì¤‘ ì„ íƒí•´ì£¼ì„¸ìš”(1 : Push , 2 : Pop , 3 : Exit)");
+			System.out.println("1~3 ¹øÈ£Áß ¼±ÅÃÇØÁÖ¼¼¿ä(1 : Push , 2 : Pop , 3 : Exit)");
 			System.out.println("1. Push");
 			System.out.println("2. Pop");
 			System.out.println("3. Exit");
-			System.out.print("ë²ˆí˜¸ ì„ íƒ : ");
+			System.out.print("¹øÈ£ ¼±ÅÃ : ");
 			while (ok2) {
 				try {
 					select = sc.nextInt();
 				} catch (InputMismatchException ime) {
-					throw new InputException("ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”!!", ime);
+					throw new InputException("¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä!!", ime);
 				}
 				switch (select) {
 				case 1:
-					System.out.print("ë¬¸ìì—´ ì…ë ¥ : ");
+					System.out.print("¹®ÀÚ¿­ ÀÔ·Â : ");
 					String str = sc.next();
-					System.out.println("*******	 Push ì‹¤í–‰	 *******");
+					System.out.println("*******	 Push ½ÇÇà	 *******");
 					s.push(str);
-					System.out.println("Pushëœ ë¬¸ìì—´ : " + str);
+					System.out.println("PushµÈ ¹®ÀÚ¿­ : " + str);
 					s.printStack();
 					ok2 = false;
 					break;
 				case 2:
-					System.out.println("*******	 Pop ì‹¤í–‰ 	*******");
+					System.out.println("*******	 Pop ½ÇÇà 	*******");
 					String nowStr = s.pop();					
-					System.out.println("Popëœ ë¬¸ìì—´ : "+ nowStr);
+					System.out.println("PopµÈ ¹®ÀÚ¿­ : "+ nowStr);
 					ok2 = false;
 					s.printStack();
 					break;
 				case 3:
-					System.out.println("í…ŒìŠ¤íŠ¸ í”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤!!");
+					System.out.println("Å×½ºÆ® ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù!!");
 					System.exit(0);
 					break;
 				}
